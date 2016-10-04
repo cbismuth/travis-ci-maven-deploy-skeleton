@@ -1,6 +1,6 @@
 # How to deploy to Maven Central by Travis-CI
 
-``` console
+``` bash
 git clone https://github.com/cbismuth/travis-ci-maven-deploy-skeleton.git
 cd travis-ci-maven-deploy-skeleton
 cp -R deploy <path to your project>/
