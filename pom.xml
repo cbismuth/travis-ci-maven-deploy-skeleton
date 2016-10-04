@@ -34,6 +34,7 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <name>Travis-CI Maven deploy skeleton</name>
+    <description>Maven Central deployment tutorial.</description>
     <url>https://github.com/cbismuth/travis-ci-maven-deploy-skeleton</url>
     <licenses>
         <license>
