@@ -4,21 +4,21 @@
 git clone https://github.com/cbismuth/travis-ci-maven-deploy-skeleton.git
 cd travis-ci-maven-deploy-skeleton
 cp -R deploy <path to your project>/
-cp .travis.yml <path to your project>/
+cp .travis.yml.template <path to your project>/.travis.yml
 cd <path to your project>
 
 gem install travis
 travis login
 travis enable -r $(echo $USER)/${PWD##*/}
 
-export ENCRYPTION_PASSWORD=<password to encrypt>
+export ENCRYPTION_PASSWORD=<password>
 openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in ~/.gnupg/secring.gpg -out deploy/secring.gpg.enc
 openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in ~/.gnupg/pubring.gpg -out deploy/pubring.gpg.enc
 
-travis encrypt --add -r $(echo $USER)/${PWD##*/} SONATYPE_USERNAME=cbismuth
-travis encrypt --add -r $(echo $USER)/${PWD##*/} SONATYPE_PASSWORD=<sonatype password>
+travis encrypt --add -r $(echo $USER)/${PWD##*/} SONATYPE_USERNAME=<username>
+travis encrypt --add -r $(echo $USER)/${PWD##*/} SONATYPE_PASSWORD=<password>
 travis encrypt --add -r $(echo $USER)/${PWD##*/} ENCRYPTION_PASSWORD=$ENCRYPTION_PASSWORD
-travis encrypt --add -r $(echo $USER)/${PWD##*/} GPG_KEYNAME=D7E158F1
+travis encrypt --add -r $(echo $USER)/${PWD##*/} GPG_KEYNAME=<keyname>
 travis encrypt --add -r $(echo $USER)/${PWD##*/} GPG_PASSPHRASE=$ENCRYPTION_PASSWORD
 ```
 
